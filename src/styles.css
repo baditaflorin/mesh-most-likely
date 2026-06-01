@@ -22,30 +22,260 @@ body,
   -webkit-tap-highlight-color: transparent;
 }
 
-.feature-placeholder {
-  padding: 6rem 1.5rem 2rem;
-  text-align: center;
+.ml-wrap {
+  min-height: 100%;
+  padding: 5rem 1.25rem 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
+  text-align: center;
 }
 
-.feature-placeholder h1 {
-  font-size: 1.6rem;
+.ml-title {
+  font-size: 1.7rem;
   margin: 0;
   color: var(--mesh-accent);
 }
 
-.feature-placeholder p {
-  max-width: 32rem;
+.ml-tagline {
+  max-width: 30rem;
   margin: 0;
-  opacity: 0.85;
+  opacity: 0.82;
   line-height: 1.5;
 }
 
-.feature-status {
+.ml-status {
+  opacity: 0.6;
+}
+
+.ml-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
   font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.ml-name input {
+  font-size: 1.1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--mesh-accent) 40%, transparent);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--mesh-fg);
+  text-align: center;
+}
+
+.ml-roster {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  max-width: 32rem;
+}
+
+.ml-decks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  max-width: 26rem;
+}
+
+.ml-deck-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--mesh-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--mesh-accent) 9%, transparent);
+  color: var(--mesh-fg);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    transform 0.08s ease,
+    background 0.15s ease;
+}
+
+.ml-deck-card:active {
+  transform: scale(0.98);
+}
+
+.ml-deck-emoji {
+  font-size: 1.8rem;
+}
+
+.ml-deck-label {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--mesh-accent);
+}
+
+.ml-deck-blurb {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.ml-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.ml-hud {
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.ml-prompt {
+  font-size: 1.7rem;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 24rem;
+}
+
+.ml-options {
+  display: flex;
+  width: 100%;
+  max-width: 26rem;
+  gap: 0.8rem;
+}
+
+.ml-options-people {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ml-options-two {
+  flex-direction: column;
+}
+
+.ml-vote {
+  flex: 1 1 auto;
+  min-height: 3.4rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.9rem;
+  border: 2px solid color-mix(in srgb, var(--mesh-accent) 30%, transparent);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--mesh-fg);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.08s ease,
+    border-color 0.12s ease,
+    background 0.12s ease;
+}
+
+.ml-options-people .ml-vote {
+  flex: 0 1 auto;
+}
+
+.ml-vote:active {
+  transform: scale(0.97);
+}
+
+.ml-vote.is-picked {
+  border-color: var(--mesh-accent);
+  background: color-mix(in srgb, var(--mesh-accent) 28%, transparent);
+}
+
+.ml-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  max-width: 26rem;
+}
+
+.ml-progress {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.ml-primary {
+  width: 100%;
+  min-height: 3.2rem;
+  border: none;
+  border-radius: 0.9rem;
+  background: var(--mesh-accent);
+  color: #0c0a10;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ml-primary:active {
+  transform: scale(0.99);
+}
+
+.ml-ghost {
+  background: none;
+  border: none;
+  color: var(--mesh-fg);
+  opacity: 0.6;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ml-results {
+  width: 100%;
+  max-width: 26rem;
+}
+
+.ml-verdict {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.4rem 0 1rem;
+}
+
+.ml-split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.ml-bar-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.2rem 0.6rem;
+  align-items: center;
+  text-align: left;
+}
+
+.ml-bar-label {
+  font-weight: 600;
+}
+
+.ml-bar-count {
   opacity: 0.6;
   font-variant-numeric: tabular-nums;
+}
+
+.ml-bar-track {
+  grid-column: 1 / -1;
+  height: 0.9rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.ml-bar-fill {
+  height: 100%;
+  background: var(--mesh-accent);
+  transition: width 0.4s ease;
+}
+
+.ml-bar-pct {
+  grid-row: 1;
+  grid-column: 2;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
 }

@@ -28,6 +28,20 @@ A **rootless-computing** peer-to-peer browser app. No backend of its own beyond 
 
 Read the principles → **https://baditaflorin.github.io/rootless-computing/principles.html**
 
+## How to play
+
+The universal icebreaker, no app store, no accounts. One person opens the link, everyone else scans the room QR (⚙ → invite) or opens the same link. Pick a deck and play — every phone votes, results pop on every screen at once.
+
+Three decks share one engine:
+
+- **👑 Most likely to…** — a prompt like _"most likely to survive a zombie apocalypse."_ Everyone taps the friend who fits. Reveal crowns the winner (confetti included) and shows the full tally.
+- **🍻 Never have I ever…** — own up with **I have** / **Never**. Reveal shows the split with a playful verdict; individual choices stay on each phone, only the counts are shared.
+- **🤔 Would you rather…** — pick option A or B, watch the room split down the middle.
+
+The card order is derived from a shared seed, so every phone walks the deck in lockstep — no "wait, which card are we on?" Anyone can hit **Reveal** and **Next card**; it's cooperative, like passing one deck around a table.
+
+24 most-likely prompts, 22 confessions, and 20 would-you-rathers ship in the box (`src/decks.ts`).
+
 ## Quickstart
 
 Open the live URL on two devices in the same room (set in ⚙ settings, or scan the room QR). Everything else is in-app.
