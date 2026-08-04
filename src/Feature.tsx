@@ -60,7 +60,12 @@ export function Feature({ room, config }: Props) {
   const card = deck ? deck.cards[order[cardNo]!] : null;
   const isLast = deck ? game.idx >= deck.cards.length - 1 : false;
 
-  const voteKey = `ml:v:${game.deck ?? "x"}:${game.idx}`;
+  // The seed is part of the key (not just deck + card index) so that
+  // starting a new round of the same deck — which draws a fresh shuffle
+  // seed — never reuses a previous playthrough's votes for "card 0", "card
+  // 1", etc. Without it, replaying a deck resurrects stale votes/tallies
+  // from the prior game for every card at the same index.
+  const voteKey = `ml:v:${game.deck ?? "x"}:${game.seed}:${game.idx}`;
   const votes = useVotes<string>(room, voteKey, room?.peerId);
 
   // Fire confetti once when a "most likely" winner is revealed.
@@ -235,7 +240,13 @@ export function Feature({ room, config }: Props) {
   let results: React.ReactNode = null;
 
   if (card.kind === "most-likely") {
-    const verdict = mostLikelyVerdict(votes.tally);
+    // A vote's target can be a peerId that has since left the room (or, on
+    // refresh, reappeared under a brand-new peerId) — Yjs never prunes those
+    // stale entries. Restrict the tally to peers still present so the
+    // crowned winner always matches someone actually shown in the
+    // leaderboard below, instead of an anonymous "peer-xxxx" who isn't here.
+    const presentTally = new Map(present.map((id) => [id, votes.tally.get(id) ?? 0]));
+    const verdict = mostLikelyVerdict(presentTally);
     const items = present
       .map((id) => ({
         id,
